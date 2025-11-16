@@ -18,22 +18,16 @@ Simply upload your Zoom meeting recording, and the system automatically:
 
 🎯 Key Features
 ⭐ 1. Upload Meeting Recording
-
 Supported formats: .mp4, .wav, .mp3, .m4a
 Automatically stores and processes files
-
 ⭐ 2. Whisper-Based Transcription
-
 High-quality speech-to-text conversion
 Handles long meetings and multiple speakers
 Optional timestamps
-
 ⭐ 3. AI Summary Generator
-
 Clean, structured summary
 Bullet-point breakdown of meeting highlights
 Easy to read and share
-
 ⭐ 4. Action Items Extraction
 Automatically identifies:
 
@@ -43,10 +37,126 @@ Deadlines
 Status (optional)
 
 ⭐ 5. Decision Extraction
-
 Detects all key decisions made during the meeting
 Saves them into the database for tracking
+⭐ 6. Decision Risk Analyzer
+AI evaluates each decision and checks for:
 
+Missing information
+Budget concerns
+Technical risks
+Conflicts with other decisions
+Feasibility issues
+Dependencies
+
+Risk Levels: 🟢 Low | 🟡 Medium | 🔴 High
+⭐ 7. Follow-Up Email Generator
+Generates a polished email including:
+
+Meeting summary
+Key decisions
+Action items with owners
+Next steps
+
+You can copy, edit, and send directly!
+⭐ 8. Ask-Your-Meeting Chatbot
+Powered by semantic search, ask questions like:
+
+"What tasks were assigned to Riya?"
+"What was the deadline for the AWS migration?"
+"Summarize only the marketing discussion."
+
+Technology: Chroma/FAISS vector store + LangChain RetrievalQA
+⭐ 9. Meeting Dashboard
+Comprehensive view displaying:
+
+📊 Summary
+✅ Action items
+🎯 Decisions
+⚠️ Risk analysis
+✉️ Follow-up email draft
+💬 Chat interface
+⬇️ Download options
+
+
+🧠 Architecture
+MeetMind AI follows a clean, scalable, and production-ready architecture.
+High-Level Flow
+Upload File → Whisper Transcription → LLM Pipelines → JSON Structured Output → 
+Embeddings → Vector Store → Dashboard + Chatbot
+🔷 Core Components
+ComponentPurposeFlask BackendHandles upload, processing, API responses, routingWhisper TranscriptionConverts speech → textLangChain PipelinesSummary, Task extraction, Decision extraction, Risk analysis, Email generationVector StoreChroma/FAISS for semantic search in chatbotFrontendBootstrap + JavaScript for UI, upload, chatDatabaseSQLite (dev) / PostgreSQL (prod) for storing meeting data
+
+🧱 Tech Stack
+Backend
+
+Flask — REST APIs & server logic
+Python — Core language
+LangChain — LLM orchestration
+Whisper — AI transcription
+Chroma / FAISS — Vector database
+Gunicorn — Production WSGI server
+
+Frontend
+
+HTML5 / Bootstrap — Clean, responsive UI
+JavaScript — File uploads, chat interface
+
+Database
+
+SQLite — Local development
+PostgreSQL — Production (Render deployment)
+
+Deployment
+
+Render.com — Direct GitHub deployment (no Docker required)
+
+
+
+
+
+⭐ MeetMind AI — Your Smart AI Meeting Intelligence Hub
+
+Upload any Zoom meeting recording → get instant summaries, tasks, decisions, risks, and a full AI chatbot that answers questions about the meeting.
+
+Show Image Show Image Show Image
+
+🔥 Overview
+MeetMind AI is a modern, AI-powered meeting assistant that transforms any meeting recording into structured, actionable insights.
+Simply upload your Zoom meeting recording, and the system automatically:
+
+🎙️ Transcribes the meeting using Whisper AI
+📄 Generates a professional summary
+✅ Extracts tasks, owners, and deadlines
+🎯 Identifies key decisions made
+⚠️ Analyzes risks in those decisions
+✉️ Creates follow-up email drafts
+🤖 Builds an AI chatbot to answer questions about the meeting
+
+
+🎯 Key Features
+⭐ 1. Upload Meeting Recording
+Supported formats: .mp4, .wav, .mp3, .m4a
+Automatically stores and processes files
+⭐ 2. Whisper-Based Transcription
+High-quality speech-to-text conversion
+Handles long meetings and multiple speakers
+Optional timestamps
+⭐ 3. AI Summary Generator
+Clean, structured summary
+Bullet-point breakdown of meeting highlights
+Easy to read and share
+⭐ 4. Action Items Extraction
+Automatically identifies:
+
+Task description
+Assigned owner
+Deadlines
+Status (optional)
+
+⭐ 5. Decision Extraction
+Detects all key decisions made during the meeting
+Saves them into the database for tracking
 ⭐ 6. Decision Risk Analyzer
 AI evaluates each decision and checks for:
 
@@ -218,7 +328,3 @@ DATABASE_URL=postgresql://... (Render auto-creates)
 🤝 Contributors
 Satyam — Developer
 AI Pair Programmer — Designed architecture & AI pipeline logic
-
-📄 License
-MIT License
-Free to use, modify, and build upon.
