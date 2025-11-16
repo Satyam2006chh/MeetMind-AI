@@ -2,201 +2,129 @@
 
 Upload any Zoom meeting recording → get instant summaries, tasks, decisions, risks, and a full AI chatbot that answers questions about the meeting.
 
+
 🔥 Overview
-
 MeetMind AI is a modern, AI-powered meeting assistant that transforms any meeting recording into structured, actionable insights.
+Simply upload your Zoom meeting recording, and the system automatically:
 
-You simply upload the Zoom meeting recording, and the system:
+🎙️ Transcribes the meeting using Whisper AI
+📄 Generates a professional summary
+✅ Extracts tasks, owners, and deadlines
+🎯 Identifies key decisions made
+⚠️ Analyzes risks in those decisions
+✉️ Creates follow-up email drafts
+🤖 Builds an AI chatbot to answer questions about the meeting
 
-Transcribes the meeting
 
-Generates a professional summary
-
-Extracts tasks, owners, and deadlines
-
-Identifies decisions
-
-Analyzes risks in the decisions
-
-Creates follow-up email drafts
-
-Builds a chatbot where you can ask anything about the meeting
-
-🎯 Features
+🎯 Key Features
 ⭐ 1. Upload Meeting Recording
 
-Supports: .mp4, .wav, .mp3, .m4a
-
-Automatically stores file
+Supported formats: .mp4, .wav, .mp3, .m4a
+Automatically stores and processes files
 
 ⭐ 2. Whisper-Based Transcription
 
-High-quality speech-to-text
-
+High-quality speech-to-text conversion
 Handles long meetings and multiple speakers
+Optional timestamps
 
 ⭐ 3. AI Summary Generator
 
 Clean, structured summary
-
-Bullet-point breakdown of the meeting
-
+Bullet-point breakdown of meeting highlights
 Easy to read and share
 
 ⭐ 4. Action Items Extraction
+Automatically identifies:
 
-Identifies:
-
-Task
-
+Task description
 Assigned owner
-
 Deadlines
-
 Status (optional)
 
 ⭐ 5. Decision Extraction
 
-Detects all meeting decisions
-
-Saves them into the database
+Detects all key decisions made during the meeting
+Saves them into the database for tracking
 
 ⭐ 6. Decision Risk Analyzer
-
 AI evaluates each decision and checks for:
 
 Missing information
-
 Budget concerns
-
 Technical risks
-
-Conflicts
-
+Conflicts with other decisions
 Feasibility issues
-
 Dependencies
 
-Outputs risk level:
-Low / Medium / High
-
+Risk Levels: 🟢 Low | 🟡 Medium | 🔴 High
 ⭐ 7. Follow-Up Email Generator
-
 Generates a polished email including:
 
-Summary
-
-Decisions
-
-Tasks
-
+Meeting summary
+Key decisions
+Action items with owners
 Next steps
 
-You can copy, edit, and directly send it.
-
+You can copy, edit, and send directly!
 ⭐ 8. Ask-Your-Meeting Chatbot
+Powered by semantic search, ask questions like:
 
-Allows users to ask:
+"What tasks were assigned to Riya?"
+"What was the deadline for the AWS migration?"
+"Summarize only the marketing discussion."
 
-“What tasks were assigned to Riya?”
-
-“What was the deadline for the AWS migration?”
-
-“Summaries only the marketing discussion.”
-
-Backed by Chroma/FAISS vector store + LangChain RetrievalQA.
-
+Technology: Chroma/FAISS vector store + LangChain RetrievalQA
 ⭐ 9. Meeting Dashboard
+Comprehensive view displaying:
 
-Displays:
+📊 Summary
+✅ Action items
+🎯 Decisions
+⚠️ Risk analysis
+✉️ Follow-up email draft
+💬 Chat interface
+⬇️ Download options
 
-Summary
-
-Action items
-
-Decisions
-
-Risk analysis
-
-Follow-up email draft
-
-Chat interface
-
-Download options
 
 🧠 Architecture
-
 MeetMind AI follows a clean, scalable, and production-ready architecture.
-
 High-Level Flow
 Upload File → Whisper Transcription → LLM Pipelines → JSON Structured Output → 
 Embeddings → Vector Store → Dashboard + Chatbot
-
 🔷 Core Components
-
-• Flask Backend
-Handles upload, processing, API responses, routing.
-
-• Whisper Transcription
-Converts speech → text.
-
-• LangChain Pipelines
-
-Summary chain
-
-Task extraction chain
-
-Decision extraction chain
-
-Decision Risk Analyzer chain
-
-Follow-up email chain
-
-• Vector Store (Chroma/FAISS)
-Used for semantic search for chatbot questions.
-
-• Frontend (Bootstrap + JS)
-Handles upload, display, chat, and dashboard.
-
-• SQLite (dev) / PostgreSQL (prod)
-Stores meeting data, transcript, tasks, decisions, risks, emails.
+ComponentPurposeFlask BackendHandles upload, processing, API responses, routingWhisper TranscriptionConverts speech → textLangChain PipelinesSummary, Task extraction, Decision extraction, Risk analysis, Email generationVector StoreChroma/FAISS for semantic search in chatbotFrontendBootstrap + JavaScript for UI, upload, chatDatabaseSQLite (dev) / PostgreSQL (prod) for storing meeting data
 
 🧱 Tech Stack
 Backend
 
-Flask – REST APIs & server logic
-
-Python – Core language
-
-LangChain – LLM orchestration
-
-Whisper – Transcription
-
-Chroma / FAISS – Vector database
-
-Gunicorn – Production WSGI server
+Flask — REST APIs & server logic
+Python — Core language
+LangChain — LLM orchestration
+Whisper — AI transcription
+Chroma / FAISS — Vector database
+Gunicorn — Production WSGI server
 
 Frontend
 
-HTML5 / Bootstrap – Clean UI
-
-JavaScript – File uploads, chat UI
+HTML5 / Bootstrap — Clean, responsive UI
+JavaScript — File uploads, chat interface
 
 Database
 
-SQLite (local development)
-
-PostgreSQL (Render deployment)
+SQLite — Local development
+PostgreSQL — Production (Render deployment)
 
 Deployment
 
-Render.com (direct GitHub deployment — no Docker required)
+Render.com — Direct GitHub deployment (no Docker required)
+
 
 📁 Folder Structure
 ai_meeting_hub/
 ├── run.py                  # Flask entry point
-├── requirements.txt
-├── README.md
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
 │
 ├── app/
 │   ├── __init__.py        # create_app(), DB setup
@@ -204,125 +132,93 @@ ai_meeting_hub/
 │   ├── models.py          # SQLAlchemy models
 │   ├── chains.py          # LangChain pipelines (summary, actions, risks, email)
 │   ├── transcription.py   # Whisper helper
-│   ├── vectorstore.py     # embeddings & vector DB logic
-│   ├── utils.py           # formatters, helpers
+│   ├── vectorstore.py     # Embeddings & vector DB logic
+│   ├── utils.py           # Formatters, helpers
 │   │
 │   ├── templates/
-│   │   ├── base.html
-│   │   ├── upload.html
-│   │   ├── dashboard.html
-│   │   └── chat.html
+│   │   ├── base.html      # Base template
+│   │   ├── upload.html    # Upload interface
+│   │   ├── dashboard.html # Results dashboard
+│   │   └── chat.html      # Chatbot interface
 │   │
 │   └── static/
-│       ├── css/
-│       └── js/
+│       ├── css/           # Stylesheets
+│       └── js/            # JavaScript files
 │
 └── uploads/               # Uploaded meeting files
 
 ⚙️ How It Works (Step-By-Step)
 1️⃣ User uploads meeting recording
-
-File stored under /uploads
-
+File is stored securely under /uploads
 2️⃣ Whisper transcribes the audio
-
 Outputs:
 
 Full transcript
-
 Optional timestamps
 
 3️⃣ LangChain processes the transcript
-
-Runs multiple chains:
+Runs multiple AI chains:
 
 Summary Chain
-
 Action Items Chain
-
 Decision Chain
-
 Decision Risk Analyzer Chain
-
 Email Generator Chain
 
 4️⃣ Vector Store created for Chatbot
-
 Transcript → chunks → embeddings → stored in Chroma/FAISS
-
-Used to answer user queries
-
+Used to answer user queries with semantic search
 5️⃣ Dashboard displays results
-
 User sees:
 
-Summary
-
-Tasks
-
-Decisions
-
-Risks
-
-Email
-
-Chatbot interface
+📄 Summary
+✅ Tasks
+🎯 Decisions
+⚠️ Risks
+✉️ Email
+💬 Chatbot interface
 
 6️⃣ User can ask questions
-
-Retrieve relevant transcript chunks → LLM → answer.
+Retrieve relevant transcript chunks → LLM → contextual answer
 
 🚀 Deployment (Render.com)
-1. Push project to GitHub
-
-Include:
+Step 1: Push project to GitHub
+Ensure you include:
 
 requirements.txt
-
 run.py
+All project files
 
-2. On Render
+Step 2: Create Web Service on Render
 
 Create → Web Service
-
-Connect GitHub repo
-
+Connect GitHub repository
 Build command:
 
-pip install -r requirements.txt
-
+bash  pip install -r requirements.txt
 
 Start command:
 
-gunicorn run:app
-
-3. Add Environment Variables
-
-OPENAI_API_KEY
-
-SECRET_KEY
-
-DATABASE_URL (Render auto-creates)
+bash  gunicorn run:app
+Step 3: Add Environment Variables
+OPENAI_API_KEY=your_openai_api_key
+SECRET_KEY=your_flask_secret_key
+DATABASE_URL=postgresql://... (Render auto-creates)
 
 🧪 Future Enhancements
 
-Real-time transcription
+🎤 Real-time transcription
+🤝 Zoom SDK bot joining live meetings
+👥 Multi-speaker diarization
+🌍 Multi-language support
+🏢 Admin dashboard for organizations
+📊 Analytics & insights across multiple meetings
 
-Zoom SDK bot joining live meetings
-
-Multi-speaker diarization
-
-Multi-language support
-
-Admin dashboard for organizations
 
 🤝 Contributors
-
 Satyam — Developer
-
 AI Pair Programmer — Designed architecture & AI pipeline logic
 
 📄 License
-
-MIT License.
+MIT License
 Free to use, modify, and build upon.
